@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  {% block title %}{% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Подключаем наш CSS -->
+  <link rel="icon" href="{% static 'icons/youtube.png' %} "  type="image/png" >
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %} {% endblock %}
+
+</head>
+<body>
+  <div class="page-container">
+  <!-- Шапка сайта -->
+  <header class="header">
+    <div class="logo">Трекер Каналов</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Главная</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'channels' %}">Каналы</a></li>
+          <li><a href="{% url 'videos' %}">Видео</a></li>
+        {% else %}
+          <li><a href="{% url 'users:register' %}">Каналы</a></li>
+          <li><a href="{% url 'users:register' %}">Видео</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <div class="profile-icon">
+        {% if user.is_authenticated %}
+          <a href="{% url 'users:profile' %}">
+            {% if user.avatar %}
+              <img src="{{ user.avatar.url }}" alt="Аватар" >
+            {% else %}
+            <img src="{% static 'icons/user_icon.png' %}" alt="Аватар">
+            {% endif %}
+         {% else %}
+         <a href="{% url 'users:register' %}">
+         <img src="{% static 'icons/user_icon.png' %}" alt="Профиль" />
+        {% endif %}
+         </a>
+    </div>
+  </header>
+    <main class="wrapper">
+  {% block content %}{% endblock %}
+    </main>
+<footer>
+  <div class="footer-container">
+    <a href="https://www.flaticon.com/free-icons/person" title="person icons">
+      Person icons created by Freepik - Flaticon
+    </a>
+    <a href="https://www.flaticon.com/free-icons/ui" title="ui icons">
+      Ui icons created by BizzBox - Flaticon
+    </a>
+
+  </div>
+</footer>
+  </div>
+</body>
+</html>

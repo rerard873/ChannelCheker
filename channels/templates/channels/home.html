@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Трекер каналов</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="wrapper">
+    <div class="container">
+        {% if user.is_authenticated %}
+         <form method="post">
+             {% csrf_token %}
+            <h2>Вставьте ссылку на канал</h2>
+            {{ form.url }}
+            <p>Отслеживайте новые видео с ваших любимых каналов</p>
+            <button type="submit" class="btn-primary">Добавить канал</button>
+         </form>
+        {% else %}
+            <p>Для отслеживания каналов вам нужно зарегестрироваться</p>
+            <a class="btn-primary" href="{% url 'users:register' %}">Зарегестрироваться</a>
+        {% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <div role="alert" class="message_alert {{message.tags}}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+</main>
+{% endblock %}
+
+

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Региистрация</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="wrapper">
+  <form class="registr_form" method="post">
+       {% csrf_token %}
+       <label for="{{ form.username.id_for_label }}">Логин</label>
+       {{ form.username }}
+
+       <label for="{{ form.email.id_for_label }}">Почта</label>
+       {{ form.email }}
+
+       <label for="{{ form.password1.id_for_label }}">Пароль</label>
+       {{ form.password1 }}
+
+       <label for="{{ form.password2.id_for_label }}">Повторите пароль</label>
+       {{ form.password2 }}
+       <a class="text-dark text-decoration-none btn-primary" href="{% url 'users:login' %}">Уже зарегестрированны</a>
+       <button type="submit">Зарегистрироваться</button>
+    </form>
+    {% if form.errors %}
+    <div role="alert" class="error_allert">
+        {{ form.errors}}
+    </div>
+    {% endif %}
+</main>
+
+{% endblock %}

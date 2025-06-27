@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Авторизация</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="wrapper">
+
+    <form class="auth_form" action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+        <label for="{{form.username.id_for_label}}" >Логин</label>
+        {{form.username}}
+        <label for="{{form.pasword.id_for_label}}" >Пароль</label>
+        {{form.password}}
+        <button type="submit">Войти</button>
+    </form>
+    {% if form.non_field_errors %}
+    <div role="alert" class="error_allert">
+        {{ form.non_field_errors}}
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

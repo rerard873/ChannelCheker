@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Virtual environment (на будущее)
+venv/
+.env/
+.venv/
+
+# Django
+db.sqlite3
+*.sqlite3
+staticfiles/
+local_settings.py
+
+# PyCharm
+.idea/
+
+# dotenv (на будущее)
+.env
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+/users/migrations/
+/channels/migrations/

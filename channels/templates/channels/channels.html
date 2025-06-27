@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Осталеживаемые каналы</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/channels.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="wrapper">
+  <div class="channel-list">
+    {% for channel in channels %}
+      <form action="{% url channels %}" method="post" class="channel-card">
+        <h2>{{ channel.name }}</h2>
+        <p><strong>Платформа:</strong> {{ channel.platform }}</p>
+        <p><strong>Добавлен:</strong> {{ channel.date_added }}</p>
+        <p><strong>Текущий статус:</strong>
+          {% if channel.status == "online" %}
+            🟢 Online
+          {% else %}
+            🔴 Offline
+          {% endif %}
+        </p>
+        <button></button>
+      </form>
+    {% empty %}
+    <div class="channel-card">
+      <p>Каналы не найдены.</p>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+
+{% endblock %}

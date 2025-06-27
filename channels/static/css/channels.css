@@ -1,0 +1,65 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+}
+
+.channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Карточка канала */
+.channel-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.channel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.channel-card h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.channel-card p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.btn-primary {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 10px 20px;
+  color: black;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.02);
+}
+a.btn-primary {
+  color: black;       /* цвет текста */
+  text-decoration: none; /* убирает подчёркивание */
+}
